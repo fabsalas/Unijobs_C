@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons >
+      <ion-back-button slot="start"></ion-back-button>
+      <ion-title style="padding-left: 23%;"> UniJobs</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="text-align:center">Crea tu cuenta</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <center><h3>¡Aquí comienza tu aventura!</h3></center>
+          </ion-col>
+            <br/>
+          <ion-col size="12" style="text-align: center;">
+    
+            <ion-item >
+              <ion-label position="floating">Ingrese número de teléfono: </ion-label>
+              <ion-input type="tel" placeholder=" 912345689">+56 </ion-input>
+            </ion-item>
+            <p style="color:grey;font-size: small; text-align: left;margin-left: 20px;">Se le enviará un código de verificación</p>
+            
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+      <ion-col >
+        <ion-button  expand="block" style="margin: 10%;" color="light"  (click)="Mostrar()">ENVIAR SMS</ion-button>
+        <ion-button  expand="block" style="margin: 10%;" color="primary" [routerLink]="['/registrarse2']">SIGUIENTE</ion-button>
+      </ion-col>
+      <ion-footer class="ion-no-border">
+        <ion-toolbar>
+          <a style="padding-left: 20%;"  [routerLink]="['/login']">¿Ya tienes una cuenta? </a>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-card-content>
+</ion-card>
+</ion-content>

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons >
+      <ion-back-button slot="start"></ion-back-button>
+      <ion-title style="padding-left: 23%;"> UniJobs</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+        <br/>
+      <ion-col size="12" style="text-align: center;">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Datos personales</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+              <ion-item>
+                <ion-label position="floating">Nombre:</ion-label>
+                <ion-input type="text" placeholder="Ingrese su nombre completo"></ion-input>
+              </ion-item>
+            <ion-item >
+              <ion-label position="floating">Apellido: </ion-label>
+              <ion-input type="text"  placeholder="Ingrese su apellido"></ion-input>
+            </ion-item>
+            <br/>
+            <ion-item >
+              <ion-label position="floating">Fecha de nacimiento: </ion-label>
+              <ion-datetime value="2019-10-01T15:43:40.394Z" display-timezone="utc"></ion-datetime>
+            </ion-item>
+            <ion-button expand="block" style="margin: 10%;" [routerLink]="['/registrarse3']">SIGUIENTE</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-col >
+    
+  </ion-col>
+</ion-content>
+

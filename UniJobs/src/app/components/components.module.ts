@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CabeceraComponent } from './cabecera/cabecera.component';
 import { MenuComponent } from './menu/menu.component';
+import { PostulacionesComponent } from './postulaciones/postulaciones.component';
+import { MiPerfilComponent } from './mi-perfil/mi-perfil.component';
+import { EmpleosComponent } from './empleos/empleos.component';
 
 
 
 @NgModule({
-  declarations: [CabeceraComponent, MenuComponent],
+  declarations: [ MenuComponent,PostulacionesComponent,MiPerfilComponent,EmpleosComponent],
   imports: [
     CommonModule
   ],
   exports:[
-    CabeceraComponent,MenuComponent
+    MenuComponent,PostulacionesComponent,MiPerfilComponent,EmpleosComponent
   ]
 })
 export class ComponentsModule { }

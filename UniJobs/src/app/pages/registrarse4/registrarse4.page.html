@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons >
+      <ion-back-button slot="start"></ion-back-button>
+      <ion-title style="padding-left: 23%;"> UniJobs</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="text-align:center">Crea tu cuenta</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-list-header>
+        </ion-list-header>
+      
+        <ion-item>
+          <ion-label >Soy un...</ion-label>
+          <ion-select cancelText="Cancelar" okText="Guardar" placeholder="Seleccione uno">
+            <ion-select-option value="empleado" >Empleado</ion-select-option>
+            <ion-select-option value="empleador" >Empleador</ion-select-option >
+          </ion-select>
+        </ion-item>
+<br><br><br>
+<ion-item>
+  <ion-label >Lugar de estudio</ion-label>
+  <ion-select cancelText="Cancelar" okText="Guardar" placeholder="Seleccione uno">
+    <ion-select-option >Duoc UC</ion-select-option>
+    <ion-select-option >U.Chile</ion-select-option >
+    <ion-select-option >U.Católica</ion-select-option >
+    <ion-select-option >U.Santo Tomás</ion-select-option >
+    <ion-select-option >Inacap</ion-select-option >
+    <ion-select-option >Aun en media</ion-select-option >
+  </ion-select>
+</ion-item>
+<br><br><br>
+        <ion-item>
+          <ion-label>Oficios</ion-label>
+          <ion-select multiple="true" placeholder="Seleccione los que desee" cancelText="Cancelar" okText="Guardar">
+            <ion-select-option value="job1">DJ</ion-select-option>
+            <ion-select-option value="job2">Niñera </ion-select-option>
+            <ion-select-option value="job3">Pintar</ion-select-option>
+            <ion-select-option value="job4">Pasear de mascota</ion-select-option>
+            <ion-select-option value="job5">Limpiar patios</ion-select-option>
+            <ion-select-option value="job6">Manicure</ion-select-option>
+            <ion-select-option value="job7">Limpieza</ion-select-option>
+            <ion-select-option value="job8">Vendedor</ion-select-option>
+            <ion-select-option value="job9">Temporero</ion-select-option>
+            <ion-select-option value="job10">Mecánico de bicicletas</ion-select-option>
+            <ion-select-option value="job12">Cleaning after party</ion-select-option>
+            <ion-select-option value="job13">Corte de pelo</ion-select-option>
+            <ion-select-option value="job14">Clases de música</ion-select-option>
+            <ion-select-option value="job15">Clases de ingles</ion-select-option>
+            <ion-select-option value="job16">Clases de matemáticas</ion-select-option>
+            <ion-select-option value="job17">Lavar autos</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" style="margin: 10%;" color="light" [routerLink]="['/home']">REGISTRARSE</ion-button>
+    </ion-card-content>
+</ion-card>
+</ion-content>
+
