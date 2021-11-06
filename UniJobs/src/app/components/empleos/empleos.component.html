@@ -12,8 +12,7 @@
         <mat-slide-toggle class="toggle" color="primary" (click)="accion1()"style="border-color: grey;"><ion-icon style="height: 140px;width: 25px;" name="location-outline" ></ion-icon></mat-slide-toggle>
             Ubicacion</ion-button>
   </ion-buttons>
- 
- <br><br>
+
   <ion-list *ngIf="ocultar1" >
     
     <ion-item *ngFor="let item of empleo" [routerLink]="['/home', empleo.id]">
@@ -28,7 +27,7 @@
 
   <div *ngIf="ocultar2">
     <br>
-    <img src="../../assets/icon/ubicacion.png" alt="" >
+    <img src="../../../assets/icon/location-error.svg" alt="" >
     
     <h3  >Upps.. <br> <h2>Debes encender tu ubicación para acceder a los trabajos cercanos</h2></h3>
   </div>
