@@ -7,6 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { Router } from '@angular/router';
 import { ComponentsModule } from '../components/components.module';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ComponentsModule } from '../components/components.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    MatSlideToggleModule
   ],
   declarations: [HomePage]
 })
