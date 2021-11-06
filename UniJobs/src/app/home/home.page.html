@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="text-align: center; font-weight: bold;">UniJobs</ion-title>
+  </ion-toolbar>
+  <!--Cabecera tipo menu-->
+  <ion-toolbar>
+    <ion-segment value="empleos" (ionChange)="segmentChanged($event)">
+      <ion-segment-button  value="empleos">
+        <ion-icon name="briefcase"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="postulaciones">
+        <ion-icon name="file-tray-full"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="perfil">
+        <ion-icon name="person"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+  <!--esta etiqueta funciona para sustituir el cuerpo de nuestra app mostrando la informacion del componente solicitado-->
+  <ion-router-outlet></ion-router-outlet>
+
+</ion-content>
