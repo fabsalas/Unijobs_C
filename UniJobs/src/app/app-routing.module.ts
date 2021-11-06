@@ -20,7 +20,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'not-found',
+    /**ESTOS ** HACEN QUE SE REDIRIJA AUTOMATICAMENTE A ESTA PAGE */
+    path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
 ];

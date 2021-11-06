@@ -18,11 +18,11 @@ const routes: Routes = [
         component: EmpleosComponent
       },
       {
-        path:'',
+        path:'postulaciones',
         component:PostulacionesComponent
       },
       {
-        path:'',
+        path:'perfil',
         component:MiPerfilComponent
       }
     ]
