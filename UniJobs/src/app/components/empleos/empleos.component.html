@@ -1,7 +1,7 @@
 
 <ion-content [fullscreen]="true" >
   <ion-buttons >
-    <ion-searchbar animated  placeholder="Buscar trabajos" (click)="click()" ></ion-searchbar>
+    <ion-searchbar animated  placeholder="Buscar trabajos" (ionInput)="getItem($event)"></ion-searchbar>
     <ion-button>
       <ion-icon name="filter-outline"></ion-icon>   
    </ion-button>
@@ -11,8 +11,10 @@
       <ion-button style="font-size: 10px; margin-left: 10px;">
         <mat-slide-toggle class="toggle" color="primary" (click)="accion1()"style="border-color: grey;"><ion-icon style="height: 140px;width: 25px;" name="location-outline" ></ion-icon></mat-slide-toggle>
             Ubicacion</ion-button>
-  </ion-buttons>
 
+  </ion-buttons>
+  <br>
+  <div>
   <ion-list *ngIf="ocultar1" >
     
     <ion-item *ngFor="let item of empleo" [routerLink]="['/home', empleo.id]">
@@ -31,6 +33,12 @@
     
     <h3  >Upps.. <br> <h2>Debes encender tu ubicación para acceder a los trabajos cercanos</h2></h3>
   </div>
+</div>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button [routerLink]="['/agregar-empleo']">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
 
+</ion-fab>
 
 </ion-content>

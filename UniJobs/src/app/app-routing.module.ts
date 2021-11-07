@@ -36,10 +36,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/registrarse4/registrarse4.module').then( m => m.Registrarse4PageModule)
   },
   {
+    path: 'agregar-empleo',
+    loadChildren: () => import('./pages/agregar-empleo/agregar-empleo.module').then( m => m.AgregarEmpleoPageModule)
+  },
+  {
     /**ESTOS ** HACEN QUE SE REDIRIJA AUTOMATICAMENTE A ESTA PAGE */
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
+  
+
   
 ];
 
