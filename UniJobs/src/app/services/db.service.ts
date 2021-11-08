@@ -12,17 +12,23 @@ export class DbService {
 
   public database: SQLiteObject;
   /*Tabla Usuario*/
-  tablaUsuario: string = "CREATE TABLE IF NOT EXISTS usuario(run INTEGER PRIMARY KEY, nombre_usu VARCHAR(50) NOT NULL, fecha_nac DATE NOT NULL, telef_usu INTEGER NOT NULL, correo_usu VARCHAR(50), clave_usu VARCHAR(50), fotoperfil_usu VARCHAR(2));";
+  tablaUsuario: string = "CREATE TABLE IF NOT EXISTS usuario(run INTEGER PRIMARY KEY, nombre_usu VARCHAR(50) NOT NULL, apellido_usu  VARCHAR(50) NOT NULL, usuario VARCHAR(50) NOT NULL, fecha_nac DATE NOT NULL, telef_usu INTEGER NOT NULL, correo_usu VARCHAR(50), clave_usu VARCHAR(50), fotoperfil_usu VARCHAR(2));";
   registro_usu: string = "INSERT or IGNORE INTO usuario(run, nombre_usu, fecha_nac, telef_usu, correo_usu, clave_usu, foto_perfil_usu ) VALUES (123456789, 'Fabian', 1998-10-10, 12345678, 'fasd@lol.com', 1234,'ft');";
   /*Tabla postulacion*/
-  tablaPostulacion: string = "CREATE TABLE IF NO EXISTS postulacion (id_post INTEGER PRIMARY KEY autoincrement, run INTEGER, FOREIGN KEY (run) REFERENCES usuario (run), id_emp INTEGER,FOREIGN KEY (id_emp) REFERENCES empleo (id_empleo),fecha_post DATE NOT NULL, status VARCHAR(2) ;"; 
+  tablaPostulacion: string = "CREATE TABLE IF NO EXISTS postulacion (id_post INTEGER PRIMARY KEY autoincrement, run INTEGER, FOREIGN KEY (run) REFERENCES usuario (run),fecha_post DATE NOT NULL, status VARCHAR(2) ;"; 
+  registro_post: string = "INSERT or IGNORE INTO postulacion(id_post, run, fecha_post, status) VALUES (1, 123456789 , 2021-10-10, 'Disponible o Ocupado');";
   /*tabla empleos */
-  tablaEmpleos: string = "CREATE TABLE IF NOT EXISTS empleo(id_emp INTEGER PRIMARY KEY autoincrement, titulo_emp VARCHAR(50) NOT NULL, descripcion_emp TEXT NOT NULL, id_cat INTEGER NOT NULL, FOREIGN KEY (id_cat) REFERENCES categoria(id_cat),sueldo INTEGER NOT NULL, direccion VARCHAR(50) fecha_publi DATE NOT NULL, status varchar(2), run INTEGER NOT NULL,FOREIGN KEY (run) REFERENCES usuario (run));";
-  registro_emp: string = "INSERT or IGNORE INTO empleo(id_emp, titulo_emp, descripcion_emp, id_cat,) VALUES (1, 'Titulo empleo', 'Descripcion del empleo que se quiere mostrar');";
+  tablaEmpleo: string = "CREATE TABLE IF NO EXISTS empleo (id_emp INTEGER PRIMARY KEY autoincrement, id_post INTEGER, FOREIGN KEY (id_post) REFERENCES postulacion (id_post), descrip_emp VARCHAR(50) NOT NULL, sueldo INTEGER NOT NUKK; fec_publi DATE NOT NULL"; 
+  registro_emp: string = "INSERT or IGNORE INTO empleo(id_emp, id_post, descrip_emp, sueldo) VALUES (1, 1 , 'trabajo por dinero', 15000);";
   /*Tabla categoria*/
-  tablaCategoria: string ="CREATE TABLE IF NOT EXISTS categoria (id_cat INTEGER PRIMARY KEY autoincrement, nombre VARCHAR(50);";
-  /*Tabla Ubicación*/
+  tablaCategoria: string ="CREATE TABLE IF NOT EXISTS categoria (id_cat INTEGER PRIMARY KEY autoincrement, id_emp INTEGER, FOREIGN KEY (id_emp) REFERENCES empleo (id_emp), nombre_categ VARCHAR(50) NOT NULL;";
+  registro_categ: string = "INSERT or IGNORE INTO categoria(id_cat, id_emp, nombre_categ) VALUES (1, 1, 'paseo, entrega');";
+  /*Tabla Direccion*/
+  tablaDireccion: string ="CREATE TABLE IF NOT EXISTS direccion (id_direc INTEGER PRIMARY KEY autoincrement, id_empINTEGER, FOREIGN KEY (id_emp) REFERENCES empleo (id_emp), direccion VARCHAR(50) NOT NULL;";
+  registro_direc: string = "INSERT or IGNORE INTO direccion(id_direc, id_emp, direccion) VALUES (1, 1, 'Santa Helena, etc');";
   /*Tabla Comuna*/
+  tablaComuna: string ="CREATE TABLE IF NOT EXISTS comuna (id_comu INTEGER PRIMARY KEY autoincrement, id_direc INTEGER, FOREIGN KEY (id_direc) REFERENCES direccion (id_direc), nombre_comuna VARCHAR(50) NOT NULL;";
+  registro_comun: string = "INSERT or IGNORE INTO comuna(id_comu, id_emp, nombre_comuna) VALUES (1, 1, 'Huechuraba, Maipu, Renca, Quilicura, etc');";
   
   listaEmpleos = new BehaviorSubject([]);
 
@@ -62,11 +68,24 @@ export class DbService {
       this.presentAlert("Creo la Tabla usu");
        //ejecutamos la creacion de tabla postulación
       await this.database.executeSql(this.tablaPostulacion, []);
+      await this.database.executeSql(this.registro_post, []);
       this.presentAlert("Creo la Tabla post");
       //ejecutamos la creacion de tabla empleo
-      await this.database.executeSql(this.tablaEmpleos, []);
+      await this.database.executeSql(this.tablaEmpleo, []);
       await this.database.executeSql(this.registro_emp, []);
       this.presentAlert("Creo la Tabla emp");
+       //ejecutamos la creacion de tabla categoria
+       await this.database.executeSql(this.tablaCategoria, []);
+       await this.database.executeSql(this.registro_categ, []);
+       this.presentAlert("Creo la Tabla categ");
+        //ejecutamos la creacion de tabla direccion
+      await this.database.executeSql(this.tablaDireccion, []);
+      await this.database.executeSql(this.registro_direc, []);
+      this.presentAlert("Creo la Tabla direc");
+       //ejecutamos la creacion de tabla comuna
+       await this.database.executeSql(this.tablaComuna, []);
+       await this.database.executeSql(this.registro_comun, []);
+       this.presentAlert("Creo la Tabla comun");
       this.buscarEmpleos();
       this.isDbReady.next(true);
     } catch (e) {
