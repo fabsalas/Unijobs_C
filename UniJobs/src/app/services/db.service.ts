@@ -12,14 +12,15 @@ export class DbService {
 
   public database: SQLiteObject;
   /*Tabla Usuario*/
-  tablaUsuario: string = "CREATE TABLE IF NOT EXISTS usuario(run INTEGER PRIMARY KEY, nombre_usu VARCHAR(50) NOT NULL, fecha_nac DATE NOT NULL, numero_usu INTEGER NOT NULL, correo_usu VARCHAR(50), clave_usu VARCHAR(50), fotoperfil_usu VARCHAR(2));";
-  registro_usu: string = "INSERT or IGNORE INTO usuario(run, nombre_usu, fecha_nac, numero_usu, correo_usu, clave_usu, foto_perfil_usu ) VALUES (123456789, 'Fabian', 1998-10-10, 12345678, 'fasd@lol.com', 1234,'ft');";
+  tablaUsuario: string = "CREATE TABLE IF NOT EXISTS usuario(run INTEGER PRIMARY KEY, nombre_usu VARCHAR(50) NOT NULL, fecha_nac DATE NOT NULL, telef_usu INTEGER NOT NULL, correo_usu VARCHAR(50), clave_usu VARCHAR(50), fotoperfil_usu VARCHAR(2));";
+  registro_usu: string = "INSERT or IGNORE INTO usuario(run, nombre_usu, fecha_nac, telef_usu, correo_usu, clave_usu, foto_perfil_usu ) VALUES (123456789, 'Fabian', 1998-10-10, 12345678, 'fasd@lol.com', 1234,'ft');";
   /*Tabla postulacion*/
-  
+  tablaPostulacion: string = "CREATE TABLE IF NO EXISTS postulacion (id_post INTEGER PRIMARY KEY autoincrement, run INTEGER, FOREIGN KEY (run) REFERENCES usuario (run), id_emp INTEGER,FOREIGN KEY (id_emp) REFERENCES empleo (id_empleo),fecha_post DATE NOT NULL, status VARCHAR(2) ;"; 
   /*tabla empleos */
-  tablaEmpleos: string = "CREATE TABLE IF NOT EXISTS empleo(id_emp INTEGER PRIMARY KEY autoincrement, titulo_emp VARCHAR(50) NOT NULL, descripcion_emp TEXT NOT NULL);";
-  registro_emp: string = "INSERT or IGNORE INTO empleo(id_emp, titulo_emp, descripcion_emp) VALUES (1, 'Titulo empleo', 'Descripcion del empleo que se quiere mostrar');";
+  tablaEmpleos: string = "CREATE TABLE IF NOT EXISTS empleo(id_emp INTEGER PRIMARY KEY autoincrement, titulo_emp VARCHAR(50) NOT NULL, descripcion_emp TEXT NOT NULL, id_cat INTEGER NOT NULL, FOREIGN KEY (id_cat) REFERENCES categoria(id_cat),sueldo INTEGER NOT NULL, direccion VARCHAR(50) fecha_publi DATE NOT NULL, status varchar(2), run INTEGER NOT NULL,FOREIGN KEY (run) REFERENCES usuario (run));";
+  registro_emp: string = "INSERT or IGNORE INTO empleo(id_emp, titulo_emp, descripcion_emp, id_cat,) VALUES (1, 'Titulo empleo', 'Descripcion del empleo que se quiere mostrar');";
   /*Tabla categoria*/
+  tablaCategoria: string ="CREATE TABLE IF NOT EXISTS categoria (id_cat INTEGER PRIMARY KEY autoincrement, nombre VARCHAR(50);";
   /*Tabla Ubicación*/
   /*Tabla Comuna*/
   
@@ -46,7 +47,7 @@ export class DbService {
 
       }).then((db: SQLiteObject) => {
         this.database = db;
-        //this.presentAlert("BD Creada");
+        this.presentAlert("BD Creada");
         //llamamos a la creación de tablas
         this.crearTablas();
       }).catch(e => this.presentAlert(e));
@@ -56,12 +57,16 @@ export class DbService {
   async crearTablas() {
     try {
        //ejecutamos la creacion de tabla usuario
+      await this.database.executeSql(this.tablaUsuario, []);
+      await this.database.executeSql(this.registro_usu, []);
+      this.presentAlert("Creo la Tabla usu");
        //ejecutamos la creacion de tabla postulación
-  
+      await this.database.executeSql(this.tablaPostulacion, []);
+      this.presentAlert("Creo la Tabla post");
       //ejecutamos la creacion de tabla empleo
       await this.database.executeSql(this.tablaEmpleos, []);
       await this.database.executeSql(this.registro_emp, []);
-      //this.presentAlert("Creo la Tabla");
+      this.presentAlert("Creo la Tabla emp");
       this.buscarEmpleos();
       this.isDbReady.next(true);
     } catch (e) {

@@ -8,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class EmpleosComponent implements OnInit {
   public ocultar1: boolean = false;
   public ocultar2: boolean = true;
+ 
   accion1(){
   this.ocultar1 = !this.ocultar1;
   this.ocultar2 = !this.ocultar2;
   }
+
   private empleo =[
     {
     id : '1',
@@ -34,9 +36,12 @@ export class EmpleosComponent implements OnInit {
     imageURL:'../../assets/img/job3.jpg',
     comment:'Necesito dar un paseo a mi perro, pero no cuento con tiempo'
   }
-] 
+]
   constructor() { }
-
+  getItem($event){
+    const valor = $event.target.value;
+    console.log(valor);
+  }
   ngOnInit() {}
 
 }

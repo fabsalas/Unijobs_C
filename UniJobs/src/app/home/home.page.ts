@@ -11,6 +11,7 @@ export class HomePage {
   constructor(private router:Router) {
     this.router.navigate(['home/empleos'])
   }
+  
 /**Funcion del segment para manipular la informacion en el home */
   segmentChanged($event){
   let direccion = $event.detail.value;

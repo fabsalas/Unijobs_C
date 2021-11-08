@@ -8,6 +8,7 @@ import {  MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatChipsModule} from '@angular/material/chips';
+import { AgregarEmpleoPageRoutingModule } from '../pages/agregar-empleo/agregar-empleo-routing.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatSlideToggleModule,
     MatCardModule,
     MatButtonModule,
-    MatChipsModule
+    MatChipsModule,
+    AgregarEmpleoPageRoutingModule
   ],
   exports:[
     MenuComponent,PostulacionesComponent,MiPerfilComponent,EmpleosComponent
