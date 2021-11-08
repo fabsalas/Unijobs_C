@@ -1,5 +1,5 @@
 
-<ion-content [fullscreen]="true" >
+<ion-content  [fullscreen]="true" >
   <ion-buttons >
     <ion-searchbar animated  placeholder="Buscar trabajos" (ionInput)="getItem($event)"></ion-searchbar>
     <ion-button>
@@ -15,8 +15,28 @@
   </ion-buttons>
   <br>
   <div>
-  <ion-list *ngIf="ocultar1" >
-    
+    <ion-list *ngIf="ocultar1">
+        <mat-card class="example-card" *ngFor="let item of empleo" [routerLink]="['/home', empleo.id]">
+          <mat-card-title-group>
+            <mat-card-title>{{item.title}}</mat-card-title>
+            <mat-card-subtitle>{{item.name}}</mat-card-subtitle>
+            <img [src]="item.imageURL" >
+          </mat-card-title-group>
+          <mat-card-content>
+            {{item.comment}}
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+              <mat-icon mat-button>Me gusta</mat-icon>
+            </button>
+          
+           
+          </mat-card-actions>
+        </mat-card>
+   
+    </ion-list>
+
+  <!--<ion-list *ngIf="ocultar1" >
     <ion-item *ngFor="let item of empleo" [routerLink]="['/home', empleo.id]">
       <ion-label>
         <ion-title style="display: block;float:left;">{{item.title}}</ion-title>
@@ -25,7 +45,7 @@
         <ion-img [src]="item.imageURL"></ion-img>
       </ion-avatar>
     </ion-item>
-  </ion-list>
+  </ion-list>-->
 
   <div *ngIf="ocultar2">
     <br>

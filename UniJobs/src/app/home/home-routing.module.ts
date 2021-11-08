@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmpleosComponent } from '../components/empleos/empleos.component';
 import { MiPerfilComponent } from '../components/mi-perfil/mi-perfil.component';
+import { MipublicacionComponent } from '../components/mipublicacion/mipublicacion.component';
 import { PostulacionesComponent } from '../components/postulaciones/postulaciones.component';
 import { HomePage } from './home.page';
 
@@ -16,6 +17,10 @@ const routes: Routes = [
       /** cada childre tiene 2 propiedades path y nombre del componente*/
         path:'empleos',
         component: EmpleosComponent
+      },
+      {
+        path:'publicaciones',
+        component:MipublicacionComponent
       },
       {
         path:'postulaciones',
