@@ -18,8 +18,8 @@ export class DbService {
   tablaPostulacion: string = "CREATE TABLE IF NO EXISTS postulacion (id_post INTEGER PRIMARY KEY autoincrement, run INTEGER, FOREIGN KEY (run) REFERENCES usuario (run),fecha_post DATE NOT NULL, status VARCHAR(2) ;"; 
   registro_post: string = "INSERT or IGNORE INTO postulacion(id_post, run, fecha_post, status) VALUES (1, 123456789 , 2021-10-10, 'Disponible o Ocupado');";
   /*tabla empleos */
-  tablaEmpleo: string = "CREATE TABLE IF NO EXISTS empleo (id_emp INTEGER PRIMARY KEY autoincrement, id_post INTEGER, FOREIGN KEY (id_post) REFERENCES postulacion (id_post), descrip_emp VARCHAR(50) NOT NULL, sueldo INTEGER NOT NUKK; fec_publi DATE NOT NULL"; 
-  registro_emp: string = "INSERT or IGNORE INTO empleo(id_emp, id_post, descrip_emp, sueldo) VALUES (1, 1 , 'trabajo por dinero', 15000);";
+  tablaEmpleo: string = "CREATE TABLE IF NO EXISTS empleo (id_emp INTEGER PRIMARY KEY autoincrement, id_post INTEGER, FOREIGN KEY (id_post) REFERENCES postulacion (id_post), titulo_emp VARCHAR(50) NOT NULL, descrip_emp VARCHAR(50) NOT NULL, sueldo INTEGER NOT NUKK; fec_publi DATE NOT NULL"; 
+  registro_emp: string = "INSERT or IGNORE INTO empleo(id_emp, id_post, titulo_emp, descrip_emp, sueldo) VALUES (1, 1 , 'Paseo de mascota', trabajo por dinero', 15000);";
   /*Tabla categoria*/
   tablaCategoria: string ="CREATE TABLE IF NOT EXISTS categoria (id_cat INTEGER PRIMARY KEY autoincrement, id_emp INTEGER, FOREIGN KEY (id_emp) REFERENCES empleo (id_emp), nombre_categ VARCHAR(50) NOT NULL;";
   registro_categ: string = "INSERT or IGNORE INTO categoria(id_cat, id_emp, nombre_categ) VALUES (1, 1, 'paseo, entrega');";
@@ -103,9 +103,10 @@ export class DbService {
         for (var i = 0; i < res.rows.length; i++) { 
           //this.presentAlert("d");
           items.push({ 
-            id: res.rows.item(i).id,
-            titulo: res.rows.item(i).titulo,  
-            texto: res.rows.item(i).texto
+            id_emp: res.rows.item(i).id,
+            titulo_emp: res.rows.item(i).titulo,  
+            descrip_emp: res.rows.item(i).descrip_emp,
+            sueldo: res.rows.item(i).sueldo
            });
         }
       }
@@ -127,7 +128,7 @@ export class DbService {
   }
 
   updateEmpleo(id, empleo: Empleos) {
-    let data = [empleo.titulo, empleo.texto];
+    let data = [empleo.titulo_emp, empleo.descrip_emp];
     return this.database.executeSql('UPDATE empleo SET titulo = ?, texto = ? WHERE id = ${id}', data)
       .then(data => {
         this.buscarEmpleos();

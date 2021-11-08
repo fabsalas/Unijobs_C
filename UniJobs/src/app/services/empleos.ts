@@ -1,6 +1,7 @@
 export class Empleos {
-    id: number;
-    titulo: string;
-    texto: string;
+    id_emp: number;
+    titulo_emp: string;
+    descrip_emp: string;
+    sueldo:number;
 
 }
