@@ -9,6 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatChipsModule} from '@angular/material/chips';
 import { AgregarEmpleoPageRoutingModule } from '../pages/agregar-empleo/agregar-empleo-routing.module';
+import { MipublicacionComponent } from './mipublicacion/mipublicacion.component';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { AgregarEmpleoPageRoutingModule } from '../pages/agregar-empleo/agregar-
     AgregarEmpleoPageRoutingModule
   ],
   exports:[
-    MenuComponent,PostulacionesComponent,MiPerfilComponent,EmpleosComponent
+    MenuComponent,PostulacionesComponent,MiPerfilComponent,EmpleosComponent,MipublicacionComponent
   ]
 })
 

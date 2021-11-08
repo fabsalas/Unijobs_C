@@ -13,14 +13,18 @@
       <ion-col ></ion-col>
       <ion-col size="12">
         <br/>
-        <ion-card>
+        <ion-card class="card">
           <ion-card-header>
-            <ion-card-title style="text-align:center">Crea tu cuenta</ion-card-title>
+            <ion-card-title style="text-align:center">Datos de tu cuenta</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <ion-item>
               <ion-label position="floating">Correo: </ion-label>
               <ion-input type="email" placeholder="Ingrese su correo electronico"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Usuario: </ion-label>
+              <ion-input type="text" placeholder="Ingrese su nombre de usuario"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Contraseña:  </ion-label>
@@ -30,7 +34,8 @@
               <ion-label position="floating" >Repetir contraseña:  </ion-label>
               <ion-input type="password" placeholder="Repita su contraseña"  ></ion-input>
             </ion-item>
-            <ion-button expand="block" style="margin: 10%;" [routerLink]="['/registrarse4']">SIGUIENTE</ion-button>
+            <ion-button expand="block" style="margin: 10%;" color="dark" [routerLink]="['/home']">REGISTRARSE</ion-button>
+            <!--<ion-button expand="block" style="margin: 10%;" [routerLink]="['/registrarse4']">SIGUIENTE</ion-button>-->
           </ion-card-content>
       </ion-card>
       </ion-col>
