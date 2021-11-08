@@ -9,9 +9,13 @@ export class AgregarEmpleoPage implements OnInit {
 
   empleo :any =[
     {
-      Id: '',
-      Titulo: "",
-      Texto: ""
+      Id_emp: '',
+      Id_cat: '',
+      Titulo_emp: "",
+      Descrip_emp: "",
+      Sueldo: "",
+      Fec_publi: "",
+      Run: "",
     }
   ]
   constructor() { }

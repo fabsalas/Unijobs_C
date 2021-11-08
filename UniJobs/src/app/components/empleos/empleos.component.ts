@@ -18,7 +18,7 @@ export class EmpleosComponent implements OnInit {
   this.ocultar2 = !this.ocultar2;
   }
 
-  private empleo =[
+  private empleos =[
     {
     id : '1',
     title: 'Paseo de mascota',
@@ -46,6 +46,18 @@ export class EmpleosComponent implements OnInit {
     const valor = $event.target.value;
     console.log(valor);
   }
+
+  empleo :any =[
+    {
+      Id_emp: 1,
+      Id_cat: 1,
+      Titulo_emp: "Paseo Mascota",
+      Descrip_emp: "Mascotas",
+      Sueldo: 100000,
+      Fec_publi: "08-11-2021",
+      Run: 123456782,
+    }
+  ]
   ngOnInit() {}
 
 }
