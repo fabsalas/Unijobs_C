@@ -20,7 +20,7 @@ const routes: Routes = [
       },
       {
         path:'publicaciones',
-        component:MipublicacionComponent
+        component: MipublicacionComponent
       },
       {
         path:'postulaciones',

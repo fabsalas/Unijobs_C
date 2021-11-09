@@ -114,7 +114,7 @@ export class DbService {
       this.listaEmpleos.next(items);
     });
   }
-
+ /**TOMA TODO EL OBSERVABLE Y GENERA COMO UNA COLECION EN JAVA Y LO RETORNA */
   fetchEmpleos(): Observable<Empleos[]> {
     return this.listaEmpleos.asObservable();
   }

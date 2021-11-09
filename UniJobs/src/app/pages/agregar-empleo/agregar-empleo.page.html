@@ -30,7 +30,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">Ganancia</ion-label>
-          <ion-input type="number" placeholder="" [(ngModel)]="empleo.Sueldo">$ {{Ganancia | currency:'CLP':'symbol-narrow':'.0-0'}}</ion-input>
+          <ion-input type="number" placeholder="" [(ngModel)]="empleo.Sueldo">$ {{sueldo | currency:'CLP':'symbol-narrow':'.0-0'}}</ion-input>
         </ion-item>
       </ion-card-content>
       <ion-button shape="block" (click)="guardaremp()">Crear empleo</ion-button>

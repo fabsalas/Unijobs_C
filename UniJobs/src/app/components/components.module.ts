@@ -13,7 +13,7 @@ import { MipublicacionComponent } from './mipublicacion/mipublicacion.component'
 
 
 @NgModule({
-  declarations: [ MenuComponent,PostulacionesComponent,MiPerfilComponent,EmpleosComponent],
+  declarations: [ MenuComponent,PostulacionesComponent,MiPerfilComponent,EmpleosComponent,MipublicacionComponent],
   imports: [
     CommonModule,
     MatSlideToggleModule,
