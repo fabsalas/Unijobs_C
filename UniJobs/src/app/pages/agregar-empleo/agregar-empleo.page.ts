@@ -23,7 +23,7 @@ export class AgregarEmpleoPage implements OnInit {
   ngOnInit() {
   }
 
-  guardar(){
+  guardaremp(){
 
   }
 }

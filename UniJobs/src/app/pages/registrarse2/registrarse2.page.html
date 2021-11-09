@@ -31,10 +31,11 @@
               <ion-label position="floating">Run: </ion-label>
               <ion-input type="run"  placeholder="123456789"></ion-input>
             </ion-item>
-            <br/>
+            <p style="color:grey;font-size: small; text-align: left;margin-left: 20px;">Sin puntos, ni guión.</p>
+  
             <ion-item >
-              <ion-label position="floating">Fecha de nacimiento: </ion-label>
-              <ion-datetime value="2019-10-01T15:43:40.394Z" display-timezone="utc"></ion-datetime>
+              <ion-label  position="floating">Fecha de nacimiento:  </ion-label>
+              <ion-datetime type="date" displayFormat="DD-MM-YYYY" min="1950" max="2002"><ion-input> {{fecha1 | date:"dd-MM-yyyy"}}</ion-input></ion-datetime>
             </ion-item>
             <ion-button expand="block" style="margin: 10%;" [routerLink]="['/registrarse3']">SIGUIENTE</ion-button>
           </ion-card-content>
