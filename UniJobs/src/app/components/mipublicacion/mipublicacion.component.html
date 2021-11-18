@@ -32,10 +32,10 @@
 
     </ion-item>
     <ion-item-options side="end">
-      <ion-item-option>
+      <ion-item-option (click)="modificar(item)">
         <ion-icon name="create"></ion-icon> Editar
       </ion-item-option>
-      <ion-item-option color="danger">
+      <ion-item-option color="danger"  (click)="eliminar(item)">
         <ion-icon name="trash"></ion-icon> Eliminar
       </ion-item-option>
     </ion-item-options>

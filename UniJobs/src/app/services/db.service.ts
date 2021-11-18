@@ -11,6 +11,7 @@ import { Empleos } from './empleos';
 export class DbService {
 
   public database: SQLiteObject;
+  
   /*Tabla Usuario*/
   tablaUsuario: string = "CREATE TABLE IF NOT EXISTS usuario(run INTEGER PRIMARY KEY, nombre_usu VARCHAR(50) NOT NULL, apellido_usu  VARCHAR(50) NOT NULL, usuario VARCHAR(50) NOT NULL, fecha_nac DATE NOT NULL, telef_usu INTEGER NOT NULL, correo_usu VARCHAR(50), clave_usu VARCHAR(50), fotoperfil_usu VARCHAR(2));";
   registro_usu: string = "INSERT or IGNORE INTO usuario(run, nombre_usu, fecha_nac, telef_usu, correo_usu, clave_usu, fotoperfil_usu ) VALUES (123456789, 'Fabian', 1998-10-10, 12345678, 'fasd@lol.com', 1234,'ft');";
@@ -18,8 +19,8 @@ export class DbService {
   tablaPostulacion: string = "CREATE TABLE IF NO EXISTS postulacion (id_post INTEGER PRIMARY KEY autoincrement, run INTEGER, FOREIGN KEY (run) REFERENCES usuario (run),fecha_post DATE NOT NULL, status VARCHAR(2) ;"; 
   registro_post: string = "INSERT or IGNORE INTO postulacion(id_post, run, fecha_post, status) VALUES (1, 123456789 , 2021-10-10, 'Disponible o Ocupado');";
   /*tabla empleos */
-  tablaEmpleo: string = "CREATE TABLE IF NO EXISTS empleo (id_emp INTEGER PRIMARY KEY autoincrement, id_cat INTEGER, FOREIGN KEY (id_cat) REFERENCES categoria (id_cat), titulo_emp VARCHAR(50) NOT NULL, descrip_emp VARCHAR(100) NOT NULL, sueldo INTEGER NOT NULL; fec_publi DATE NOT NULL, run INTEGER, FOREIGN KEY (run) REFERENCES usuario (run) );"; 
-  registro_emp: string = "INSERT or IGNORE INTO empleo(id_emp, id_cat, titulo_emp, descrip_emp, sueldo,fec_publi, run) VALUES (1, 1 , 'Paseo de mascota', trabajo por dinero', 15000, 08-11-2021,123456789);";
+  tablaEmpleo: string = "CREATE TABLE IF NO EXISTS empleo (id_emp INTEGER PRIMARY KEY autoincrement, id_cat INTEGER, FOREIGN KEY (id_cat) REFERENCES categoria (id_cat), titulo_emp VARCHAR(50) NOT NULL, descrip_emp VARCHAR(100) NOT NULL, sueldo_emp INTEGER NOT NULL; status_emp VARCHAR(50) NOT NULL, nombre_usu VARCHAR(50), NOT NULL"; 
+  registro_emp: string = "INSERT or IGNORE INTO empleo(id_emp, id_cat, titulo_emp, descrip_emp, sueldo_emp, status_emp, nombre_usu) VALUES (1, 1 , 'Paseo de mascota', trabajo por dinero', 'publicado hace ...','fabian');";
   /*Tabla categoria*/
   tablaCategoria: string ="CREATE TABLE IF NOT EXISTS categoria (id_cat INTEGER PRIMARY KEY autoincrement, nombre_categ VARCHAR(50) NOT NULL;)";
   registro_categ: string = "INSERT or IGNORE INTO categoria(id_cat, nombre_categ) VALUES (1, 'paseo de mascota');";
@@ -103,10 +104,12 @@ export class DbService {
         for (var i = 0; i < res.rows.length; i++) { 
           //this.presentAlert("d");
           items.push({ 
-            id_emp: res.rows.item(i).id,
-            titulo_emp: res.rows.item(i).titulo,  
+            id_emp: res.rows.item(i).id_emp,
+            titulo_emp: res.rows.item(i).titulo_emp, 
+            status_emp:res.rows.item(i).status_emp,
+            nombre_usu:res.row.item(i).nombre_usu, 
             descrip_emp: res.rows.item(i).descrip_emp,
-            sueldo: res.rows.item(i).sueldo
+            sueldo_emp: res.rows.item(i).sueldo_emp
            });
         }
       }
@@ -119,24 +122,24 @@ export class DbService {
     return this.listaEmpleos.asObservable();
   }
 
-  addEmpleo(titulo, texto) {
-    let data = [titulo, texto];
-    return this.database.executeSql('INSERT INTO empleo (titulo, texto) VALUES (?, ?)', data)
+  addEmpleo(titulo_emp, status_emp,  nombre_usu, descrip_emp,sueldo_emp) {
+    let data = [titulo_emp, status_emp, nombre_usu, descrip_emp, sueldo_emp];
+    return this.database.executeSql('INSERT INTO empleo (titulo_emp, status_emp, nombre_usu, descrip_emp, sueldo_emp) VALUES (?, ?, ?, ?, ?)', data)
       .then(res => {
         this.buscarEmpleos();
       });
   }
 
-  updateEmpleo(id, empleo: Empleos) {
-    let data = [empleo.titulo_emp, empleo.descrip_emp];
-    return this.database.executeSql('UPDATE empleo SET titulo = ?, texto = ? WHERE id = ${id}', data)
+  updateEmpleo(id_emp, empleo: Empleos) {
+    let data = [empleo.titulo_emp, empleo.descrip_emp, empleo.nombre_usu, empleo.status_emp, empleo.sueldo_emp];
+    return this.database.executeSql('UPDATE empleo SET titulo_emp = ?, descrip_emp = ? , sueldo_emp = ? WHERE id_emp = ${id_emp}', data)
       .then(data => {
         this.buscarEmpleos();
       })
   }
 
-  deleteEmpleo(id) {
-    return this.database.executeSql('DELETE FROM empleo WHERE id = ?', [id])
+  deleteEmpleo(id_emp) {
+    return this.database.executeSql('DELETE FROM empleo WHERE id_emp = ?', [id_emp])
       .then(_ => {
         this.buscarEmpleos();
       });

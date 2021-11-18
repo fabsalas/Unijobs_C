@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
+import { DbService } from 'src/app/services/db.service';
 
 @Component({
   selector: 'app-mipublicacion',
@@ -7,29 +9,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MipublicacionComponent implements OnInit {
 
-   empleo :any = [
-    {
+   empleo :any [] =[]
+    /*{
       id_emp: 1,
-      status:'publicado hace 2 min.',
+      status_emp:'publicado hace 2 min.',
       imageURL:'../../assets/img/paseomascota.png',
-      title: 'Paseo de mascota.',
+      titulo_emp: 'Paseo de mascota.',
       nombre_usu: 'Jhon snow',
-      comentario: 'necesito pasear a mi lobo.'
+      descrip_emp: 'necesito pasear a mi lobo.'
     },
     {
       id_emp: 2,
-      status:'publicado hace menos de una semana.',
-      imageURL:'../../assets/img/manicure.jpg',
-      title: 'manicure.',
-      nombre_usu: 'Betty snow.',
-      comentario: 'necesito una manicure urgente.'
-    },
-  ]
+      status_emp:'publicado hace 2 min.',
+      imageURL:'../../assets/img/paseomascota.png',
+      titulo_emp: 'Paseo de mascota.',
+      nombre_usu: 'Jhon snow',
+      descrip_emp: 'necesito pasear a mi lobo.'
+    },*/
+    
+  
 
   
-  constructor() { }
+  constructor(private router:Router, private servicioBD: DbService) { }
 
 
+  modificar(item){
+    console.log(item)/*se usa para comprobar en consola */
+    let navigatioExtras: NavigationExtras ={
+      state:{
+      cadenaTexto: item.id_emp,
+      cadenaTexto2: item.titulo_emp,
+      cadenaTexto3: item.status_emp,
+      cadenaTexto4: item.nombre_usu,
+      cadenaTexto5: item.descrip_emp,
+      cadenaTexto6: item.sueldo_emp
+      }
+    } 
+    this.router.navigate(['/modificar'], navigatioExtras);
+  }
+
+  eliminar(){
+    
+  }
   ngOnInit() {}
 
 }

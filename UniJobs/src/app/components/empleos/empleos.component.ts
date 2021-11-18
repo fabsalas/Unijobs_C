@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from 'src/app/services/db.service';
 
 
 
@@ -18,8 +19,8 @@ export class EmpleosComponent implements OnInit {
   this.ocultar2 = !this.ocultar2;
   }
 
-  private empleos =[
-    {
+   empleo: any []=[]
+    /*{
     id : '1',
     title: 'Paseo de mascota',
     name: 'Juan',
@@ -40,14 +41,14 @@ export class EmpleosComponent implements OnInit {
     imageURL:'../../assets/img/job3.jpg',
     comment:'Necesito dar un paseo a mi perro, pero no cuento con tiempo'
   }
-]
-  constructor() { }
+*/
+  constructor(private servicioBD: DbService) { }
   getItem($event){
     const valor = $event.target.value;
     console.log(valor);
   }
 
-  empleo :any =[
+  /*empleos :any =[
     {
       Id_emp: 1,
       Id_cat: 1,
@@ -57,7 +58,21 @@ export class EmpleosComponent implements OnInit {
       Fec_publi: "08-11-2021",
       Run: 123456782,
     }
-  ]
-  ngOnInit() {}
+  ]*/
+  ngOnInit() {
+        //this.servicioBD.presentAlert("1");
+        this.servicioBD.dbState().subscribe((res) =>{
+          //this.servicioBD.presentAlert("2");
+          if(res){
+            //this.servicioBD.presentAlert("3");
+            this.servicioBD.fetchEmpleos().subscribe(item =>{
+              this.empleo = item;
+            })
+          }
+          //this.servicioBD.presentAlert("4");
+        });
+      }
+    
+  }
 
-}
+
