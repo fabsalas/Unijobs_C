@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { DbService } from 'src/app/services/db.service';
 
 
@@ -19,15 +20,15 @@ export class EmpleosComponent implements OnInit {
   this.ocultar2 = !this.ocultar2;
   }
 
-   empleo: any []=[]
-    /*{
-    id : '1',
-    title: 'Paseo de mascota',
-    name: 'Juan',
-    imageURL:'../../assets/img/paseomascota.png',
-    comment:'Necesito dar un paseo a mi perro, pero no cuento con tiempo'
-  },
-  {
+
+   empleo: any =[
+    {
+    id : '',
+    titulo: '',
+    texto: ''
+  }
+   ]
+  /*{
     id : '2',
     title: 'Manicure',
     name: 'Francisco',
@@ -42,7 +43,7 @@ export class EmpleosComponent implements OnInit {
     comment:'Necesito dar un paseo a mi perro, pero no cuento con tiempo'
   }
 */
-  constructor(private servicioBD: DbService) { }
+  constructor(private servicioBD: DbService,private router:Router) { }
   getItem($event){
     const valor = $event.target.value;
     console.log(valor);
@@ -59,6 +60,9 @@ export class EmpleosComponent implements OnInit {
       Run: 123456782,
     }
   ]*/
+
+
+  
   ngOnInit() {
         //this.servicioBD.presentAlert("1");
         this.servicioBD.dbState().subscribe((res) =>{
@@ -73,6 +77,7 @@ export class EmpleosComponent implements OnInit {
         });
       }
     
+      
   }
 
 

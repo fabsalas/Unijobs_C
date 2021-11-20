@@ -22,13 +22,13 @@
       <ion-card-content>
         <ion-item>
           <ion-label position="floating">Titulo</ion-label>
-          <ion-input type="text" [(ngModel)]="empleo.Titulo_emp"></ion-input>
+          <ion-input type="text" [(ngModel)]="empleo.titulo"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="floating">Status</ion-label>
-          <ion-textarea type="text" [(ngModel)]="empleo.Status_emp"></ion-textarea>
+          <ion-label position="floating">texto</ion-label>
+          <ion-textarea type="text" [(ngModel)]="empleo.texto"></ion-textarea>
         </ion-item>
-        <ion-item>
+        <!--<ion-item>
           <ion-label position="floating">Nombre Usuario</ion-label>
           <ion-textarea type="text" [(ngModel)]="empleo.Nombre_usu"></ion-textarea>
         </ion-item>
@@ -40,7 +40,7 @@
           <ion-label position="floating">Ganancia</ion-label>
           <ion-input type="number" placeholder="" [(ngModel)]="empleo.Sueldo_emp">$ {{sueldo | currency:'CLP':'symbol-narrow':'.0-0'}}</ion-input>
         </ion-item>
-        
+        -->
       </ion-card-content>
       <ion-button shape="block" (click)="agregaremp()">Crear empleo</ion-button>
     </ion-card>

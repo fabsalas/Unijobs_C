@@ -1,4 +1,4 @@
-export class Empleos {
+/*export class Empleos {
     id_emp: number;
     titulo_emp: string;
     status_emp: string;
@@ -6,4 +6,9 @@ export class Empleos {
     descrip_emp: string;
     sueldo_emp:number;
 
+}*/
+export class Empleos {
+    id: number;
+    titulo: string;
+    texto: string;
 }

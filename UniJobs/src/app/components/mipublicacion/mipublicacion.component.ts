@@ -8,9 +8,15 @@ import { DbService } from 'src/app/services/db.service';
   styleUrls: ['./mipublicacion.component.scss'],
 })
 export class MipublicacionComponent implements OnInit {
-
-   empleo :any [] =[]
-    /*{
+  empleo: any =[
+    {
+    id : '',
+    titulo: '',
+    texto: ''
+  }
+   ]
+  /* empleo :any [] =[]
+    {
       id_emp: 1,
       status_emp:'publicado hace 2 min.',
       imageURL:'../../assets/img/paseomascota.png',
@@ -33,24 +39,32 @@ export class MipublicacionComponent implements OnInit {
   constructor(private router:Router, private servicioBD: DbService) { }
 
 
-  modificar(item){
-    console.log(item)/*se usa para comprobar en consola */
-    let navigatioExtras: NavigationExtras ={
-      state:{
-      cadenaTexto: item.id_emp,
-      cadenaTexto2: item.titulo_emp,
-      cadenaTexto3: item.status_emp,
-      cadenaTexto4: item.nombre_usu,
-      cadenaTexto5: item.descrip_emp,
-      cadenaTexto6: item.sueldo_emp
+  
+  
+  ngOnInit() {
+    //this.servicioBD.presentAlert("1");
+    this.servicioBD.dbState().subscribe((res) =>{
+      //this.servicioBD.presentAlert("2");
+      if(res){
+        //this.servicioBD.presentAlert("3");
+        this.servicioBD.fetchEmpleos().subscribe(item =>{
+          this.empleo = item;
+        })
       }
-    } 
-    this.router.navigate(['/modificar'], navigatioExtras);
+      //this.servicioBD.presentAlert("4");
+    });
   }
 
-  eliminar(){
-    
+  eliminar(item){
+    this.servicioBD.deleteEmpleo(this.empleo.id);
+    this.servicioBD.presentAlert("Eliminado");
   }
-  ngOnInit() {}
+  modificar(item) {
+    console.log(item);
+    let navigationExtras: NavigationExtras = {
+      state: { cadenaTexto: item.titulo, cadenaTexto2: item.texto, cadenaTexto3: item.id}
+    }
+    this.router.navigate(['/modificar'], navigationExtras);
+  }
 
 }

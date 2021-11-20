@@ -15,19 +15,17 @@
 </ion-content>-->
 <ion-content>
     <h4>Empleos publicados...</h4>
-<ion-list class="list">
+<ion-list >
   <ion-item-sliding *ngFor="let item of empleo">
 
     <ion-item>
-      <ion-avatar item-start>
-        <img [src]="item.imageURL">
-      </ion-avatar>
+
 
       <ion-label>
-        <p class="status "style="color:grey;font-size: small; text-align: left;margin-left: 20px;">{{item.status}}</p>
-        <h2>{{item.title}}</h2>
+        <p style="color:grey;font-size: small; text-align: left;margin-left: 20px;">{{item.id}}</p>
+        <h2>{{item.titulo}}</h2>
         <!-- word-wrap para los cortes entre palabras  white-space para que aparezca todo el texto en varias lineas y no se corte-->
-        <p style="word-wrap: break-word; white-space: normal;">{{item.comentario}}</p>
+        <p style="word-wrap: break-word; white-space: normal;">{{item.texto}}</p>
       </ion-label>
 
     </ion-item>
