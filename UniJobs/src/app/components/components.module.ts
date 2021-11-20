@@ -10,7 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatChipsModule} from '@angular/material/chips';
 import { AgregarEmpleoPageRoutingModule } from '../pages/agregar-empleo/agregar-empleo-routing.module';
 import { MipublicacionComponent } from './mipublicacion/mipublicacion.component';
-
+import { ModificarPageRoutingModule } from '../pages/modificar/modificar-routing.module';
 
 @NgModule({
   declarations: [ MenuComponent,PostulacionesComponent,MiPerfilComponent,EmpleosComponent,MipublicacionComponent],
@@ -20,7 +20,8 @@ import { MipublicacionComponent } from './mipublicacion/mipublicacion.component'
     MatCardModule,
     MatButtonModule,
     MatChipsModule,
-    AgregarEmpleoPageRoutingModule
+    AgregarEmpleoPageRoutingModule,
+    ModificarPageRoutingModule
   ],
   exports:[
     MenuComponent,PostulacionesComponent,MiPerfilComponent,EmpleosComponent,MipublicacionComponent

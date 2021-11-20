@@ -12,24 +12,10 @@ export class DbService {
 
   public database: SQLiteObject;
   
-  /*Tabla Usuario*/
-  tablaUsuario: string = "CREATE TABLE IF NOT EXISTS usuario(run INTEGER PRIMARY KEY, nombre_usu VARCHAR(50) NOT NULL, apellido_usu  VARCHAR(50) NOT NULL, usuario VARCHAR(50) NOT NULL, fecha_nac DATE NOT NULL, telef_usu INTEGER NOT NULL, correo_usu VARCHAR(50), clave_usu VARCHAR(50), fotoperfil_usu VARCHAR(2));";
-  registro_usu: string = "INSERT or IGNORE INTO usuario(run, nombre_usu, fecha_nac, telef_usu, correo_usu, clave_usu, fotoperfil_usu ) VALUES (123456789, 'Fabian', 1998-10-10, 12345678, 'fasd@lol.com', 1234,'ft');";
-  /*Tabla postulacion*/
-  tablaPostulacion: string = "CREATE TABLE IF NO EXISTS postulacion (id_post INTEGER PRIMARY KEY autoincrement, run INTEGER, FOREIGN KEY (run) REFERENCES usuario (run),fecha_post DATE NOT NULL, status VARCHAR(2) ;"; 
-  registro_post: string = "INSERT or IGNORE INTO postulacion(id_post, run, fecha_post, status) VALUES (1, 123456789 , 2021-10-10, 'Disponible o Ocupado');";
   /*tabla empleos */
-  tablaEmpleo: string = "CREATE TABLE IF NO EXISTS empleo (id_emp INTEGER PRIMARY KEY autoincrement, id_cat INTEGER, FOREIGN KEY (id_cat) REFERENCES categoria (id_cat), titulo_emp VARCHAR(50) NOT NULL, descrip_emp VARCHAR(100) NOT NULL, sueldo_emp INTEGER NOT NULL; status_emp VARCHAR(50) NOT NULL, nombre_usu VARCHAR(50), NOT NULL"; 
-  registro_emp: string = "INSERT or IGNORE INTO empleo(id_emp, id_cat, titulo_emp, descrip_emp, sueldo_emp, status_emp, nombre_usu) VALUES (1, 1 , 'Paseo de mascota', trabajo por dinero', 'publicado hace ...','fabian');";
-  /*Tabla categoria*/
-  tablaCategoria: string ="CREATE TABLE IF NOT EXISTS categoria (id_cat INTEGER PRIMARY KEY autoincrement, nombre_categ VARCHAR(50) NOT NULL;)";
-  registro_categ: string = "INSERT or IGNORE INTO categoria(id_cat, nombre_categ) VALUES (1, 'paseo de mascota');";
-  /*Tabla Direccion*/
-  tablaDireccion: string ="CREATE TABLE IF NOT EXISTS direccion (id_direc INTEGER PRIMARY KEY autoincrement, descripcion VARCHAR(50) NOT NULL,id_com INTEGER, FOREIGN KEY (id_com) REFERENCES comuna (id_com);";
-  registro_direc: string = "INSERT or IGNORE INTO direccion(id_direc, descripcion, id_com) VALUES (1,'Santa Helena 123', 1);";
-  /*Tabla Comuna*/
-  tablaComuna: string ="CREATE TABLE IF NOT EXISTS comuna (id_com INTEGER PRIMARY KEY autoincrement, nombre_comuna VARCHAR(50) NOT NULL);";
-  registro_comun: string = "INSERT or IGNORE INTO comuna(id_comu,  nombre_comuna) VALUES (1,  'Huechuraba');";
+  tablaEmpleos: string = "CREATE TABLE IF NOT EXISTS empleo(id INTEGER PRIMARY KEY autoincrement, titulo VARCHAR(50) NOT NULL, texto TEXT NOT NULL);"; 
+  registro_emp: string = "INSERT or IGNORE INTO empleo(id, titulo, texto) VALUES (1,'Paseo perruno','Necesito que alguien realice el paseo perruno');";
+  update_emp :string = "UPDATE empleo SET titulo = 'zapato', texto = '123124214'  WHERE id = 1";
   
   listaEmpleos = new BehaviorSubject([]);
 
@@ -44,6 +30,21 @@ export class DbService {
 
   dbState() {
     return this.isDbReady.asObservable();
+  }
+
+  async crearTablas() {
+    try {
+      
+      //ejecutamos la creacion de tabla empleo
+      await this.database.executeSql(this.tablaEmpleos, []);
+      await this.database.executeSql(this.registro_emp, []);
+      /*await this.database.executeSql(this.update_emp, []);*/
+      this.presentAlert("Creo la Tabla emp");
+      this.buscarEmpleos();
+      this.isDbReady.next(true);
+    } catch (error) {
+      this.presentAlert("Ha ocurrido un error inesperado al crear la tabla:  " + error.message);
+    }
   }
 
   crearBD() {
@@ -61,38 +62,17 @@ export class DbService {
     })
   }
 
-  async crearTablas() {
-    try {
-       //ejecutamos la creacion de tabla usuario
-      await this.database.executeSql(this.tablaUsuario, []);
-      await this.database.executeSql(this.registro_usu, []);
-      this.presentAlert("Creo la Tabla usu");
-       //ejecutamos la creacion de tabla postulación
-      await this.database.executeSql(this.tablaPostulacion, []);
-      await this.database.executeSql(this.registro_post, []);
-      this.presentAlert("Creo la Tabla post");
-      //ejecutamos la creacion de tabla empleo
-      await this.database.executeSql(this.tablaEmpleo, []);
-      await this.database.executeSql(this.registro_emp, []);
-      this.presentAlert("Creo la Tabla emp");
-       //ejecutamos la creacion de tabla categoria
-       await this.database.executeSql(this.tablaCategoria, []);
-       await this.database.executeSql(this.registro_categ, []);
-       this.presentAlert("Creo la Tabla categ");
-        //ejecutamos la creacion de tabla direccion
-      await this.database.executeSql(this.tablaDireccion, []);
-      await this.database.executeSql(this.registro_direc, []);
-      this.presentAlert("Creo la Tabla direc");
-       //ejecutamos la creacion de tabla comuna
-       await this.database.executeSql(this.tablaComuna, []);
-       await this.database.executeSql(this.registro_comun, []);
-       this.presentAlert("Creo la Tabla comun");
-      this.buscarEmpleos();
-      this.isDbReady.next(true);
-    } catch (e) {
-      this.presentAlert("error creartabla " + e);
-    }
+  async presentAlert(mensaje: string) {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      message: mensaje,
+      buttons: ['Cancel']
+    });
+
+    await alert.present();
   }
+
+ 
 
   buscarEmpleos() {
     //this.presentAlert("a");
@@ -104,12 +84,9 @@ export class DbService {
         for (var i = 0; i < res.rows.length; i++) { 
           //this.presentAlert("d");
           items.push({ 
-            id_emp: res.rows.item(i).id_emp,
-            titulo_emp: res.rows.item(i).titulo_emp, 
-            status_emp:res.rows.item(i).status_emp,
-            nombre_usu:res.row.item(i).nombre_usu, 
-            descrip_emp: res.rows.item(i).descrip_emp,
-            sueldo_emp: res.rows.item(i).sueldo_emp
+            id: res.rows.item(i).id,
+            titulo: res.rows.item(i).titulo,
+            texto: res.rows.item(i).texto
            });
         }
       }
@@ -122,39 +99,31 @@ export class DbService {
     return this.listaEmpleos.asObservable();
   }
 
-  addEmpleo(titulo_emp, status_emp,  nombre_usu, descrip_emp,sueldo_emp) {
-    let data = [titulo_emp, status_emp, nombre_usu, descrip_emp, sueldo_emp];
-    return this.database.executeSql('INSERT INTO empleo (titulo_emp, status_emp, nombre_usu, descrip_emp, sueldo_emp) VALUES (?, ?, ?, ?, ?)', data)
+  addEmpleo(titulo, texto) {
+    let data = [titulo, texto];
+    return this.database.executeSql('INSERT INTO empleo (titulo, texto) VALUES (?, ?)', data)
       .then(res => {
         this.buscarEmpleos();
       });
   }
 
-  updateEmpleo(id_emp, empleo: Empleos) {
-    let data = [empleo.titulo_emp, empleo.descrip_emp, empleo.nombre_usu, empleo.status_emp, empleo.sueldo_emp];
-    return this.database.executeSql('UPDATE empleo SET titulo_emp = ?, descrip_emp = ? , sueldo_emp = ? WHERE id_emp = ${id_emp}', data)
+  updateEmpleo(id, empleo:Empleos) {
+    let data = [empleo.titulo, empleo.texto];
+    return this.database.executeSql('UPDATE empleo SET titulo = ?, texto = ?  WHERE id = ${id}', data)
       .then(data => {
         this.buscarEmpleos();
       })
   }
 
-  deleteEmpleo(id_emp) {
-    return this.database.executeSql('DELETE FROM empleo WHERE id_emp = ?', [id_emp])
+  deleteEmpleo(id) {
+    return this.database.executeSql('DELETE FROM empleo WHERE id = ?',[id])
       .then(_ => {
         this.buscarEmpleos();
       });
   }
   
 
-  async presentAlert(mensaje: string) {
-    const alert = await this.alertController.create({
-      header: 'Alert',
-      message: mensaje,
-      buttons: ['Cancel']
-    });
-
-    await alert.present();
-  }
+ 
 
 
 
