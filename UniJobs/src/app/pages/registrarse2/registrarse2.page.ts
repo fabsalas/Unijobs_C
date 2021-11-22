@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registrarse2.page.scss'],
 })
 export class Registrarse2Page implements OnInit {
-
+  fecha1:Date;
   constructor() { }
 
   ngOnInit() {

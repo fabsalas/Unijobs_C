@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EmpleosComponent } from '../components/empleos/empleos.component';
 import { MiPerfilComponent } from '../components/mi-perfil/mi-perfil.component';
 import { MipublicacionComponent } from '../components/mipublicacion/mipublicacion.component';
 import { PostulacionesComponent } from '../components/postulaciones/postulaciones.component';
@@ -13,14 +12,10 @@ const routes: Routes = [
 
     /*se crearan subrutas llamadas children para que me muestre los
     diferentes components de mi menu segment*/ 
-    children:[{
-      /** cada childre tiene 2 propiedades path y nombre del componente*/
-        path:'empleos',
-        component: EmpleosComponent
-      },
+    children:[
       {
         path:'publicaciones',
-        component:MipublicacionComponent
+        component: MipublicacionComponent
       },
       {
         path:'postulaciones',

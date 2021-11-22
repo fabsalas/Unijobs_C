@@ -39,12 +39,17 @@ const routes: Routes = [
     path: 'agregar-empleo',
     loadChildren: () => import('./pages/agregar-empleo/agregar-empleo.module').then( m => m.AgregarEmpleoPageModule)
   },
+
   {
-    /**ESTOS ** HACEN QUE SE REDIRIJA AUTOMATICAMENTE A ESTA PAGE */
-    path: '**',
-    loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
+    path: 'modificar',
+    loadChildren: () => import('./pages/modificar/modificar.module').then( m => m.ModificarPageModule)
   },
   
+  {
+    /**ESTOS ** HACEN QUE SE REDIRIJA AUTOMATICAMENTE A ESTA PAGE */
+    path: 'not-found',
+    loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
+  }
 
   
 ];
