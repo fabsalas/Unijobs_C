@@ -21,6 +21,19 @@ export class ModificarPage implements OnInit {
   }*/
   empleo :any =
     {
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
       id:'',
       titulo:'',
       texto:''  
@@ -28,6 +41,27 @@ export class ModificarPage implements OnInit {
   
 
   /*constructor(private router:Router, private activeroute:ActivatedRoute, private servicioBD: DbService) { 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+=======
+      Id:'',
+      Titulo:'',
+      Texto:''  
+    };
+  
+
+  /*constructor(private router:Router , private activeroute:ActivatedRoute, private servicioBD: DbService) { 
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   this.activeroute.queryParams.subscribe(params => {
     if(this.router.getCurrentNavigation().extras.state){
       this.empleo.Id = this.router.getCurrentNavigation().extras.state.cadenaTexto;
@@ -41,9 +75,45 @@ export class ModificarPage implements OnInit {
    constructor(private router: Router, private activeroute: ActivatedRoute, private servicioBD: DbService) {
     this.activeroute.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation().extras.state){
+<<<<<<< Updated upstream
         this.empleo.id = this.router.getCurrentNavigation().extras.state.cadenaTexto;
         this.empleo.titulo = this.router.getCurrentNavigation().extras.state.cadenaTexto2;
         this.empleo.texto = this.router.getCurrentNavigation().extras.state.cadenaTexto3;
+=======
+<<<<<<< Updated upstream
+        this.empleo.titulo = this.router.getCurrentNavigation().extras.state.cadenaTexto;
+        this.empleo.texto = this.router.getCurrentNavigation().extras.state.cadenaTexto2;
+        this.empleo.id = this.router.getCurrentNavigation().extras.state.cadenaTexto3;
+=======
+<<<<<<< Updated upstream
+        this.empleo.titulo = this.router.getCurrentNavigation().extras.state.cadenaTexto;
+        this.empleo.texto = this.router.getCurrentNavigation().extras.state.cadenaTexto2;
+        this.empleo.id = this.router.getCurrentNavigation().extras.state.cadenaTexto3;
+=======
+<<<<<<< Updated upstream
+        this.empleo.id = this.router.getCurrentNavigation().extras.state.cadenaTexto;
+        this.empleo.titulo = this.router.getCurrentNavigation().extras.state.cadenaTexto2;
+        this.empleo.texto = this.router.getCurrentNavigation().extras.state.cadenaTexto3;
+=======
+<<<<<<< Updated upstream
+        this.empleo.id = this.router.getCurrentNavigation().extras.state.cadenaTexto;
+        this.empleo.titulo = this.router.getCurrentNavigation().extras.state.cadenaTexto2;
+        this.empleo.texto = this.router.getCurrentNavigation().extras.state.cadenaTexto3;
+=======
+<<<<<<< Updated upstream
+        this.empleo.id = this.router.getCurrentNavigation().extras.state.cadenaTexto;
+        this.empleo.titulo = this.router.getCurrentNavigation().extras.state.cadenaTexto2;
+        this.empleo.texto = this.router.getCurrentNavigation().extras.state.cadenaTexto3;
+=======
+        this.empleo.Titulo = this.router.getCurrentNavigation().extras.state.cadenaTexto;
+        this.empleo.Texto = this.router.getCurrentNavigation().extras.state.cadenaTexto2;
+        this.empleo.Id = this.router.getCurrentNavigation().extras.state.cadenaTexto3;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
       }
     })
 
@@ -51,11 +121,53 @@ export class ModificarPage implements OnInit {
 
   ngOnInit() {
   }
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+  editaremp(){
+    this.servicioBD.updateEmpleo(this.empleo.id,this.empleo);
+    this.servicioBD.presentAlert("Modificado");
+    
+    this.router.navigate(['/home']);
+  }
+<<<<<<< Updated upstream
+=======
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   editaremp(){
     this.servicioBD.updateEmpleo(this.empleo.id,this.empleo)
       this.servicioBD.presentAlert("Modificado");
       this.router.navigate(['/home']);
   }
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+=======
+  /*editaremp(){
+    this.servicioBD.updateEmpleo(this.empleo.id,this.empleo.texto);
+    this.servicioBD.presentAlert("Modificado");
+    
+    this.router.navigate(['/home']);
+  }*/
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
  }
 

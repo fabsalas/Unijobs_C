@@ -13,7 +13,19 @@ import { MipublicacionComponent } from './mipublicacion/mipublicacion.component'
 import { ModificarPageRoutingModule } from '../pages/modificar/modificar-routing.module';
 
 @NgModule({
+<<<<<<< Updated upstream
   declarations: [ MenuComponent,PostulacionesComponent,MiPerfilComponent,MipublicacionComponent],
+=======
+<<<<<<< Updated upstream
+  declarations: [ MenuComponent,PostulacionesComponent,MiPerfilComponent,EmpleosComponent,MipublicacionComponent],
+=======
+<<<<<<< Updated upstream
+  declarations: [ MenuComponent,PostulacionesComponent,MiPerfilComponent,EmpleosComponent,MipublicacionComponent],
+=======
+  declarations: [ MenuComponent,PostulacionesComponent,MiPerfilComponent,MipublicacionComponent],
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   imports: [
     CommonModule,
     MatSlideToggleModule,

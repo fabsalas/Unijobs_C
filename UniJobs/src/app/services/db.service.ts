@@ -15,7 +15,27 @@ export class DbService {
   /*tabla empleos */
   tablaEmpleos: string = "CREATE TABLE IF NOT EXISTS empleo(id INTEGER PRIMARY KEY autoincrement, titulo VARCHAR(50) NOT NULL, texto TEXT NOT NULL);"; 
   registro_emp: string = "INSERT or IGNORE INTO empleo(id, titulo, texto) VALUES (1,'Paseo perruno','Necesito que alguien realice el paseo perruno');";
+<<<<<<< Updated upstream
   update_emp :string = "UPDATE empleo SET titulo = 'zapato', texto = '123124214'  WHERE id = 1";
+=======
+<<<<<<< Updated upstream
+  update_emp :string = "UPDATE empleo SET titulo = 'zapato', texto = '123124214'  WHERE id = 1";
+=======
+<<<<<<< Updated upstream
+  update_emp :string = "UPDATE empleo SET titulo = 'zapato', texto = '123124214'  WHERE id = 1";
+=======
+<<<<<<< Updated upstream
+  update_emp :string = "UPDATE empleo SET titulo = 'zapato', texto = '123124214'  WHERE id = 1";
+=======
+<<<<<<< Updated upstream
+  update_emp :string = "UPDATE empleo SET titulo = 'zapato', texto = '123124214'  WHERE id = 1";
+=======
+  /*update_emp :string = "UPDATE empleo SET titulo = 'zapato', texto = '123124214'  WHERE id = 1";*/
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   
   listaEmpleos = new BehaviorSubject([]);
 
@@ -23,7 +43,7 @@ export class DbService {
 
   constructor(private sqlite: SQLite, private platform: Platform, public alertController: AlertController) {
     this.crearBD();
-
+ 
     //this.buscarEmpleos();
     //this.presentAlert("todo listo");
   }
@@ -62,6 +82,19 @@ export class DbService {
     })
   }
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   async presentAlert(mensaje: string) {
     const alert = await this.alertController.create({
       header: 'Alert',
@@ -70,9 +103,49 @@ export class DbService {
     });
 
     await alert.present();
+<<<<<<< Updated upstream
   }
 
  
+=======
+<<<<<<< Updated upstream
+  }
+
+ 
+=======
+<<<<<<< Updated upstream
+  }
+
+ 
+=======
+<<<<<<< Updated upstream
+  }
+
+ 
+=======
+  }
+
+ 
+=======
+  async crearTablas() {
+    try {
+      //ejecutamos la creacion de tabla empleo
+      await this.database.executeSql(this.tablaEmpleos, []);
+      await this.database.executeSql(this.registro_emp, []);
+      /*await this.database.executeSql(this.update_emp, []);*/
+      this.presentAlert("Creo la Tabla emp");
+      this.buscarEmpleos();
+      this.isDbReady.next(true);
+    } catch (e) {
+      this.presentAlert("Ha ocurrido un error inesperado al crear la tabla:  " + e);
+    }
+  }
+
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
   buscarEmpleos() {
     //this.presentAlert("a");
@@ -94,6 +167,19 @@ export class DbService {
       this.listaEmpleos.next(items);
     });
   }
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+  
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
  /**TOMA TODO EL OBSERVABLE Y GENERA COMO UNA COLECION EN JAVA Y LO RETORNA */
   fetchEmpleos(): Observable<Empleos[]> {
     return this.listaEmpleos.asObservable();
@@ -108,25 +194,83 @@ export class DbService {
   }
 
   updateEmpleo(id, empleo:Empleos) {
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+    let data = [empleo.titulo, empleo.texto];
+    return this.database.executeSql('UPDATE empleo SET titulo = ?, texto = ?  WHERE id = ${id}', data)
+=======
+<<<<<<< Updated upstream
+    let data = [empleo.titulo, empleo.texto];
+    return this.database.executeSql('UPDATE empleo SET titulo = ?, texto = ?  WHERE id = ${id}', data)
+=======
+>>>>>>> Stashed changes
     
     let data = [empleo.titulo,empleo.texto];
     
     return this.database.executeSql('UPDATE empleo SET titulo = ?, texto = ?  WHERE id = ?', data)
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
       .then(data => {
         this.buscarEmpleos();
       }).catch(error => this.presentAlert(error.message));
       
   }
 
+<<<<<<< Updated upstream
   deleteEmpleo(id:number) {
+=======
+<<<<<<< Updated upstream
+  deleteEmpleo(id) {
+<<<<<<< Updated upstream
+=======
+=======
+  deleteEmpleo(id:number) {
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     return this.database.executeSql('DELETE FROM empleo WHERE id = ?',[id])
       .then(_ => {
         this.buscarEmpleos();
       });
   }
   
+<<<<<<< Updated upstream
 
  
+=======
+<<<<<<< Updated upstream
+
+ 
+=======
+<<<<<<< Updated upstream
+
+ 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+=======
+  async presentAlert(mensaje: string) {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      message: mensaje,
+      buttons: ['Cancel']
+    });
+
+    await alert.present();
+  }
+>>>>>>> Stashed changes
+
+
+ 
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 
 

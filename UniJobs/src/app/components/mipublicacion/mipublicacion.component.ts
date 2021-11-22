@@ -8,13 +8,58 @@ import { DbService } from 'src/app/services/db.service';
   styleUrls: ['./mipublicacion.component.scss'],
 })
 export class MipublicacionComponent implements OnInit {
+<<<<<<< Updated upstream
   empleo: any =[
+=======
+<<<<<<< Updated upstream
+  empleo: any =[
+=======
+<<<<<<< Updated upstream
+  empleo: any =[
+=======
+<<<<<<< Updated upstream
+  empleo: any =[
+=======
+<<<<<<< Updated upstream
+  empleo: any =[
+=======
+  empleo: any =
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     {
     id : '',
     titulo: '',
     texto: ''
+<<<<<<< Updated upstream
   }
    ]
+=======
+<<<<<<< Updated upstream
+  }
+   ]
+=======
+<<<<<<< Updated upstream
+  }
+   ]
+=======
+<<<<<<< Updated upstream
+  }
+   ]
+=======
+<<<<<<< Updated upstream
+  }
+   ]
+=======
+  };
+   
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   /* empleo :any [] =[]
     {
       id_emp: 1,
@@ -51,7 +96,27 @@ export class MipublicacionComponent implements OnInit {
           this.empleo = item;
         })
       }
+<<<<<<< Updated upstream
       //this.servicioBD.presentAlert("4");
+=======
+<<<<<<< Updated upstream
+      //this.servicioBD.presentAlert("4");
+=======
+<<<<<<< Updated upstream
+      //this.servicioBD.presentAlert("4");
+=======
+<<<<<<< Updated upstream
+      //this.servicioBD.presentAlert("4");
+=======
+<<<<<<< Updated upstream
+      //this.servicioBD.presentAlert("4");
+=======
+      //this.servicioBD.presentAlert("4") ;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     });
   }
 
@@ -60,7 +125,27 @@ export class MipublicacionComponent implements OnInit {
     this.servicioBD.presentAlert("Eliminado");
   }
   modificar(item) {
+<<<<<<< Updated upstream
     console.log(item);
+=======
+<<<<<<< Updated upstream
+    console.log(item);
+=======
+<<<<<<< Updated upstream
+    console.log(item);
+=======
+<<<<<<< Updated upstream
+    console.log(item);
+=======
+<<<<<<< Updated upstream
+    console.log(item);
+=======
+    console.log(item); 
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     let navigationExtras: NavigationExtras = {
       state: { cadenaTexto: item.titulo, cadenaTexto2: item.texto, cadenaTexto3: item.id}
     }
