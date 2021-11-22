@@ -1,6 +1,14 @@
 
-
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons >
+      <ion-back-button slot="end"></ion-back-button>
+      <ion-title style="text-align: center;"> UniJobs</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
+  
   <div class="ion-padding-vertical">
     <!--
       Se establece un card que contendra un titulo
@@ -34,8 +42,9 @@
           <ion-input type="number" placeholder="" [(ngModel)]="empleo.Sueldo_emp">$ {{sueldo | currency:'CLP':'symbol-narrow':'.0-0'}}</ion-input>
         </ion-item>
         -->
+        <ion-button (click)="editaremp()">Actualizar</ion-button>
       </ion-card-content>
-      <ion-button (click)="editaremp()">Actualizar</ion-button>
+      
     </ion-card>
   </div>
 
