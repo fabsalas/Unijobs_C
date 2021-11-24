@@ -11,24 +11,4 @@ export class Empleos {
     id: number;
     titulo: string;
     texto: string;
-<<<<<<< Updated upstream
 }
-=======
-<<<<<<< Updated upstream
-}
-=======
-<<<<<<< Updated upstream
-}
-=======
-<<<<<<< Updated upstream
-}
-=======
-<<<<<<< Updated upstream
-}
-=======
-} 
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
