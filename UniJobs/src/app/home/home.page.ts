@@ -19,9 +19,11 @@ export class HomePage  implements OnInit{
 
   empleo: any =[
     {
-      id :'',
-      titulo:'',
-      texto:''
+      id_emp : '',
+      titulo_emp: '',
+      descrip_emp: '',
+      pago_emp: '',
+      status_emp: ''
     }
   ]
 
@@ -54,16 +56,18 @@ export class HomePage  implements OnInit{
 
 
   eliminar(item){
-    this.servicioBD.deleteEmpleo(item.id);
+    this.servicioBD.deleteEmpleo(item.id_emp);
     this.servicioBD.presentAlert("Empleo Eliminado");
   }
 
   modificar(item) {
     console.log(item);
     let navigationExtras: NavigationExtras = {
-      state: { cadenaTexto: item.id ,
-               cadenaTexto2: item.titulo, 
-               cadenaTexto3: item.texto
+      state: { cadenaTexto: item.id_emp ,
+               cadenaTexto2: item.titulo_emp, 
+               cadenaTexto3: item.descrip_emp,
+               cadenaTexto4: item.pago_emp,
+               cadenaTexto5: item.status_emp
             }
     }
     this.router.navigate(['/modificar'], navigationExtras);

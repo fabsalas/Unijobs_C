@@ -8,7 +8,10 @@
 
 }*/
 export class Empleos {
-    id: number;
-    titulo: string;
-    texto: string;
+    id_emp: number;
+    nombre_usu: string;
+    titulo_emp: string;
+    descrip_emp: string;
+    pago_emp: number;
+    status_emp: string;
 }

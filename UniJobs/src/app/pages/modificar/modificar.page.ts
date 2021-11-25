@@ -41,9 +41,11 @@ export class ModificarPage implements OnInit {
    constructor(private router: Router, private activeroute: ActivatedRoute, private servicioBD: DbService) {
     this.activeroute.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation().extras.state){
-        this.empleo.Id      = this.router.getCurrentNavigation().extras.state.cadenaTexto;
-        this.empleo.Titulo  = this.router.getCurrentNavigation().extras.state.cadenaTexto2;
-        this.empleo.Texto   = this.router.getCurrentNavigation().extras.state.cadenaTexto3;
+        this.empleo.Id_emp      = this.router.getCurrentNavigation().extras.state.cadenaTexto;
+        this.empleo.Titulo_emp  = this.router.getCurrentNavigation().extras.state.cadenaTexto2;
+        this.empleo.Descrip_emp  = this.router.getCurrentNavigation().extras.state.cadenaTexto3;
+        this.empleo.Pago_emp  = this.router.getCurrentNavigation().extras.state.cadenaTexto4;
+        this.empleo.Status_emp  = this.router.getCurrentNavigation().extras.state.cadenaTexto5;
       }
     })
 
@@ -53,7 +55,7 @@ export class ModificarPage implements OnInit {
   }
   editaremp(){
    // this.servicioBD.presentAlert(this.empleo.Titulo);
-      this.servicioBD.updateEmpleo(this.empleo.Id, this.empleo.Titulo, this.empleo.Texto);
+      this.servicioBD.updateEmpleo(this.empleo.Id_emp, this.empleo.Titulo_emp, this.empleo.Descrip_emp, this.empleo.Pago_emp, this.empleo.Status_emp);
       this.servicioBD.presentAlert("Modificado");
       this.router.navigate(['/home']);
   }

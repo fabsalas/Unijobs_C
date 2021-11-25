@@ -22,9 +22,11 @@ export class AgregarEmpleoPage implements OnInit {
   ]*/
   empleo :any =[
     {
-      id:'',
-      titulo:'',
-      texto:''  
+      id_emp : '',
+      titulo_emp: '',
+      descrip_emp: '',
+      pago_emp: '',
+      status_emp: '' 
     }
   ]
   constructor(private router: Router, private servicioBD: DbService) { }
@@ -33,7 +35,7 @@ export class AgregarEmpleoPage implements OnInit {
   }
 
   agregaremp(){
-    this.servicioBD.addEmpleo(this.empleo.titulo, this.empleo.texto);
+    this.servicioBD.addEmpleo(this.empleo.titulo_emp, this.empleo.descrip_emp, this.empleo.pago_emp,this. empleo.status_emp);
     this.servicioBD.presentAlert("Registro realizado");
     /*console.log('lol');*/
     this.router.navigate(['/home']);
