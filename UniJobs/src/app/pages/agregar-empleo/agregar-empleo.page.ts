@@ -36,7 +36,7 @@ export class AgregarEmpleoPage implements OnInit {
     this.servicioBD.addEmpleo(this.empleo.titulo, this.empleo.texto);
     this.servicioBD.presentAlert("Registro realizado");
     console.log('lol');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home/empleos']);
   }
 
   

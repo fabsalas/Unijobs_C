@@ -8,10 +8,6 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { Router } from '@angular/router';
 import { ComponentsModule } from '../components/components.module';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon'
 
 @NgModule({
   imports: [
@@ -20,11 +16,7 @@ import {MatIconModule} from '@angular/material/icon'
     IonicModule,
     HomePageRoutingModule,
     ComponentsModule,
-    MatSlideToggleModule,
-    MatTabsModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule
+    MatSlideToggleModule
   ],
   declarations: [HomePage]
 })

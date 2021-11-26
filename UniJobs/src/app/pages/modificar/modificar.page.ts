@@ -41,9 +41,9 @@ export class ModificarPage implements OnInit {
    constructor(private router: Router, private activeroute: ActivatedRoute, private servicioBD: DbService) {
     this.activeroute.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation().extras.state){
-        this.empleo.id = this.router.getCurrentNavigation().extras.state.cadenaTexto;
-        this.empleo.titulo = this.router.getCurrentNavigation().extras.state.cadenaTexto2;
-        this.empleo.texto = this.router.getCurrentNavigation().extras.state.cadenaTexto3;
+        this.empleo.titulo = this.router.getCurrentNavigation().extras.state.cadenaTexto;
+        this.empleo.texto = this.router.getCurrentNavigation().extras.state.cadenaTexto2;
+        this.empleo.id = this.router.getCurrentNavigation().extras.state.cadenaTexto3;
       }
     })
 
@@ -52,9 +52,10 @@ export class ModificarPage implements OnInit {
   ngOnInit() {
   }
   editaremp(){
-    this.servicioBD.updateEmpleo(this.empleo.id,this.empleo)
-      this.servicioBD.presentAlert("Modificado");
-      this.router.navigate(['/home']);
+    this.servicioBD.updateEmpleo(this.empleo.id,this.empleo);
+    this.servicioBD.presentAlert("Modificado");
+    
+    this.router.navigate(['/home']);
   }
 
  }

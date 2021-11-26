@@ -8,13 +8,7 @@ import { DbService } from '../services/db.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage  implements OnInit{
-  public ocultar1: boolean = false;
-  public ocultar2: boolean = true;
- 
-  accion1(){
-  this.ocultar1 = !this.ocultar1;
-  this.ocultar2 = !this.ocultar2;
-  }
+
   empleo: any =[
     {
     id : '',
@@ -30,7 +24,10 @@ export class HomePage  implements OnInit{
 
   
 /**Funcion del segment para manipular la informacion en el home */
-
+  segmentChanged($event){
+  let direccion = $event.detail.value;
+    this.router.navigate(['home/'+direccion]);
+  }
 
   getItem($event){
     const valor = $event.target.value;
@@ -52,14 +49,14 @@ export class HomePage  implements OnInit{
 
     
   }
-  eliminar(empleo){
+  eliminar(item:any){
     this.servicioBD.deleteEmpleo(this.empleo.id);
     this.servicioBD.presentAlert("Eliminado");
   }
-  modificar(item) {
-
+  modificar(item:any) {
+    console.log(item);
     let navigationExtras: NavigationExtras = {
-      state: { cadenaTexto: item.id ,cadenaTexto2: item.titulo, cadenaTexto3: item.texto}
+      state: { cadenaTexto: item.titulo, cadenaTexto2: item.texto, cadenaTexto3: item.id}
     }
     this.router.navigate(['/modificar'], navigationExtras);
   }

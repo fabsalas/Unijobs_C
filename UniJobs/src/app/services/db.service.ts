@@ -102,23 +102,20 @@ export class DbService {
   addEmpleo(titulo, texto) {
     let data = [titulo, texto];
     return this.database.executeSql('INSERT INTO empleo (titulo, texto) VALUES (?, ?)', data)
-      .then(_res => {
+      .then(res => {
         this.buscarEmpleos();
       });
   }
 
   updateEmpleo(id, empleo:Empleos) {
-    
-    let data = [empleo.titulo,empleo.texto];
-    
-    return this.database.executeSql('UPDATE empleo SET titulo = ?, texto = ?  WHERE id = ?', data)
+    let data = [empleo.titulo, empleo.texto];
+    return this.database.executeSql('UPDATE empleo SET titulo = ?, texto = ?  WHERE id = ${id}', data)
       .then(data => {
         this.buscarEmpleos();
-      }).catch(error => this.presentAlert(error.message));
-      
+      })
   }
 
-  deleteEmpleo(id:number) {
+  deleteEmpleo(id) {
     return this.database.executeSql('DELETE FROM empleo WHERE id = ?',[id])
       .then(_ => {
         this.buscarEmpleos();
